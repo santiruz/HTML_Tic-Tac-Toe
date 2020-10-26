@@ -5,7 +5,7 @@ const cellDivs = document.querySelectorAll('.game-cell');
 const winPercentDiv = document.querySelector('.winPercentage');
 
 
-//all game variables
+//game variables
 let gameIsLive = true;
 let xIsNext = true;
 let win = false;
