@@ -12,6 +12,7 @@ let win = false;
 let counter = 0;
 let numWins = 0;
 let numGames = 1;
+let looptwice = false;
 
 const handleWin = (letter) =>
 {
@@ -19,14 +20,17 @@ const handleWin = (letter) =>
     if(win)
     {
 
-
         if (letter === 'x') {
+            if(looptwice)
+            numWins -= 1;
+            looptwice = !looptwice;
             numWins += 1;
             statusDiv.innerHTML = `<sp>Human Won!</sp>`;
         } else {
             statusDiv.innerHTML = `<span>Computer won!</span>`;
         }
         winPercentDiv.innerHTML = `<span>Win Percentage: ${((numWins/numGames) * 100).toFixed(2)}%</span>`;
+
 
     }
 };
@@ -244,7 +248,10 @@ const handleReset = (e) => {
         cellDiv.classList.remove('won');
 
     }
+
     numGames += 1;
+    if(gameIsLive)
+    winPercentDiv.innerHTML = `<span>Win Percentage: ${((numWins/numGames) * 100).toFixed(2)}%</span>`;
     gameIsLive = true;
     counter = 0;
 };
